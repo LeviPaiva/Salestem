@@ -75,10 +75,15 @@
 let table = document.createElement("table");
 
 let columnID = document.createElement("td");
+let colunaImg = document.createElement("td");
 let coluna1 = document.createElement("td");
 let coluna2 = document.createElement("td");
+// let coluna3 = document.createElement("td");
 let btnEdit = document.createElement("button");
 let btnDelete = document.createElement("button");
+
+
+
 
 const lt_data  = [
   {
@@ -93,12 +98,14 @@ const lt_data  = [
   },  {
     "id": 2,
     "coluna1": "Valor 3",
-    "coluna2": "Valor 4"
+    "coluna2": "Valor 4",
+    "coluna3": 'images/Estojo-brw.webp'
   },
   {
     "id": 3,
     "coluna1": "Valor 5",
-    "coluna2": "Valor 6"
+    "coluna2": "Valor 6",
+    'coluna3': 'images/caneta_bic-3.webp'
   }
 ];
 
@@ -117,20 +124,27 @@ for (let i = 0; i < lt_data.length; i++) {
   columnID.textContent  = lt_data[i].id;
   coluna1.textContent  = lt_data[i].coluna1;
   coluna2.textContent  = lt_data[i].coluna2;
-    
+
   let novacolunaID = columnID.cloneNode(true);
+  let novaImage = colunaImg.cloneNode(true);
   let novaColuna1 = coluna1.cloneNode(true);
   let novaColuna2 = coluna2.cloneNode(true);
-  let novaColuna3 = btnEdit.cloneNode(true);
-  let novaColuna4 = btnDelete.cloneNode(true);
   
+  
+  let novaBtnEdit = btnEdit.cloneNode(true);
+  let novaBtnDelete = btnDelete.cloneNode(true);
+  
+  novaImage = document.createElement('img');
+  novaImage.src = lt_data[i].coluna3;
+  novaImage.classList.add('gt_column_img');
 
-  novaColuna3.addEventListener("click", () => {
-    if (novaColuna3.textContent === "Editar") {
+
+  novaBtnEdit.addEventListener("click", () => {
+    if (novaBtnEdit.textContent === "Editar") {
       novaColuna1.innerHTML = '<input type="text" value="' + novaColuna1.textContent + '">';
       novaColuna2.innerHTML = '<input type="text" value="' + novaColuna2.textContent + '">';
-      novaColuna3.textContent = "Salvar";
-      novaColuna4.textContent = "Cancelar";
+      novaBtnEdit.textContent = "Salvar";
+      novaBtnDelete.textContent = "Cancelar";
     } else {
       
       let dadosLinha = {
@@ -144,13 +158,13 @@ for (let i = 0; i < lt_data.length; i++) {
 
       novaColuna1.textContent = dadosLinha.coluna1;
       novaColuna2.textContent = dadosLinha.coluna2;
-      novaColuna3.textContent = "Editar";
-      novaColuna4.textContent = "Deletar";
+      novaBtnEdit.textContent = "Editar";
+      novaBtnDelete.textContent = "Deletar";
     }
   });
 
-  novaColuna4.addEventListener("click", () => {
-    if (novaColuna4.textContent === "Cancelar") {
+  novaBtnDelete.addEventListener("click", () => {
+    if (novaBtnDelete.textContent === "Cancelar") {
 
       if ( novaColuna1.querySelector("input").value !== novaColuna1.textContent ){
       novaColuna1.innerHTML = novaColuna1.querySelector("input").value;
@@ -162,8 +176,8 @@ for (let i = 0; i < lt_data.length; i++) {
 
      }
       
-      novaColuna3.textContent = "Editar";
-      novaColuna4.textContent = "Deletar";
+     novaBtnEdit.textContent = "Editar";
+     novaBtnDelete.textContent = "Deletar";
     } else {
       linha.remove();
     }
@@ -171,10 +185,11 @@ for (let i = 0; i < lt_data.length; i++) {
   
 
   linha.appendChild(novacolunaID);
+  linha.appendChild(novaImage);
   linha.appendChild(novaColuna1);
   linha.appendChild(novaColuna2);
-  linha.appendChild(novaColuna3);
-  linha.appendChild(novaColuna4);
+  linha.appendChild(novaBtnEdit);
+  linha.appendChild(novaBtnDelete);
   table.appendChild(linha);
 }
 
