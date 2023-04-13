@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    min-height: 100vh;
+
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+}
+
+td img {
+    width: 50px;
+    height: 50px;
+    margin-right: 5rem;
+    border-radius: 50%;
+
+    vertical-align: middle;
+}
+
+#table-container{
+    background-color: rgba(134, 129, 129, 0.733);
+    border-radius: 5px;
+}
+
+#table-container tr{
+    color: black;
+    padding-top: 10px;
+}
+
+
+
+#table-container td{
+    color: rgb(0, 238, 255);
+    padding: 5px 5px 5px 5px;
+    
+    
+}
+
+
+#tableLine{
+    background-color: brown;
+    /* margin-bottom: 10px; */
+    /* padding-bottom: 10px; */
+}
