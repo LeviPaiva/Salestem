@@ -1,188 +1,133 @@
-// let table = document.createElement("table");
+let table = document.createElement("table");
 
-// let linha1 = document.createElement("tr");
-// let linha2 = document.createElement("tr");
-// let linha3 = document.createElement("tr");
-// linha1.id = ('tableLine');
-// // linha1.classList.add("tableLine");
-
-// let Column1 = document.createElement("td");
-// let Column2 = document.createElement("td");
-// let Column3 = document.createElement("td");
-// let Column4 = document.createElement("td");
-// let Column5 = document.createElement("td");
-
-// Column1.textContent = "Linha 1, Coluna 1|";
-// Column2.textContent = "Linha 1, Coluna 2|";
-// Column3.textContent = "Linha 2, Coluna 1|";
-// Column4.textContent = "Linha 2, Coluna 2|";
-// Column5.textContent = "Linha 3, Coluna 1|";
-
-// let cloneColumn1 = Column1.cloneNode(true);
-// let cloneColumn2 = Column2.cloneNode(true);
-// let cloneColumn3 = Column3.cloneNode(true);
-// let cloneColumn4 = Column4.cloneNode(true);
-// let cloneColumn5 = Column5.cloneNode(true);
-// // let cloneColumn6 = btnEdit.cloneNode(true);
+let columnID = document.createElement("td");
+let colunaImg = document.createElement("td");
+let coluna1 = document.createElement("td");
+let coluna2 = document.createElement("td");
+// let coluna3 = document.createElement("td");
+let btnEdit = document.createElement("button");
+let btnDelete = document.createElement("button");
 
 
 
-// linha1.appendChild(cloneColumn1);
-// linha1.appendChild(cloneColumn2);
-// linha1.appendChild(cloneColumn3);
-// linha1.appendChild(cloneColumn4);
-// linha1.appendChild(cloneColumn5);
-// // linha1.appendChild(cloneColumn6);
 
-// table.appendChild(linha1);
+const lt_data  = [
+  {
+    "id": 1,
+    "coluna1": "Valor 1",
+    "coluna2": "Valor 2"
+  },
+  {
+    "id": 2,
+    "coluna1": "Valor 3",
+    "coluna2": "Valor 4"
+  },  {
+    "id": 2,
+    "coluna1": "Valor 3",
+    "coluna2": "Valor 4",
+    "coluna3": 'images/Estojo-brw.webp'
+  },
+  {
+    "id": 3,
+    "coluna1": "Valor 5",
+    "coluna2": "Valor 6",
+    'coluna3': 'images/caneta_bic-3.webp'
+  }
+];
 
-// let tableContainer = document.getElementById("table-container");
-// tableContainer.appendChild(table);
 
-// =================================================================
-// =================================================================
-// =================================================================
-// let table = document.createElement("table");
 
-// let coluna1 = document.createElement("td");
-// let coluna2 = document.createElement("td");
-// let btnEdit = document.createElement("button");
-// btnEdit.id = "id_btnEdit";
+// coluna1.textContent = "Primeira Coluna";
+// coluna2.textContent = "Segunda Coluna";
+btnEdit.textContent = "Editar";
+btnDelete.textContent = "Deletar";
 
-// coluna1.textContent = "Conteúdo da coluna 1";
-// coluna2.textContent = "Conteúdo da coluna 2";
-// btnEdit.textContent = "Editar";
+for (let i = 0; i < lt_data.length; i++) {
 
-// for (let i = 0; i < 5; i++) {
-//   let linha = document.createElement("tr");
-//   let novaColuna1 = coluna1.cloneNode(true);
-//   let novaColuna2 = coluna2.cloneNode(true);
-//   let novaColuna3 = btnEdit.cloneNode(true);
   
-//   linha.appendChild(novaColuna1);
-//   linha.appendChild(novaColuna2);
-//   linha.appendChild(novaColuna3);
-//   table.appendChild(linha);
-// }
-
-// let tableContainer = document.getElementById("table-container");
-// tableContainer.appendChild(table);
-
-// ===================================================================
-// ===================================================================
-// ===================================================================
-
-// let table = document.createElement("table");
-
-// let coluna1 = document.createElement("td");
-// let coluna2 = document.createElement("td");
-// let btnEdit = document.createElement("button");
-// let btnDelete = document.createElement("button");
-
-// let lt_data = [];
-
-
-
-// coluna1.textContent = "Conteúdo da coluna 1";
-// coluna2.textContent = "Conteúdo da coluna 2";
-// btnEdit.textContent = "Editar";
-// btnDelete.textContent = "Deletar";
-
-// for (let i = 0; i < 5; i++) {
-//   let linha = document.createElement("tr");
-//   let novaColuna1 = coluna1.cloneNode(true);
-//   let novaColuna2 = coluna2.cloneNode(true);
-//   let novaColuna3 = btnEdit.cloneNode(true);
-//   let novaColuna4 = btnDelete.cloneNode(true);
+  columnID.textContent = i;
   
-//   novaColuna3.addEventListener("click", () => {
-//     if (novaColuna3.textContent === "Editar") {
-//       novaColuna1.innerHTML = '<input type="text" value="' + novaColuna1.textContent + '">';
-//       novaColuna2.innerHTML = '<input type="text" value="' + novaColuna2.textContent + '">';
-//       novaColuna3.textContent = "Salvar";
-//       novaColuna4.textContent = "Cancelar";
-//     } else {
+  let linha = document.createElement("tr");
+  
+  columnID.textContent  = lt_data[i].id;
+  coluna1.textContent  = lt_data[i].coluna1;
+  coluna2.textContent  = lt_data[i].coluna2;
+
+  let novacolunaID = columnID.cloneNode(true);
+  let novaImage = colunaImg.cloneNode(true);
+  let novaColuna1 = coluna1.cloneNode(true);
+  let novaColuna2 = coluna2.cloneNode(true);
+  
+  
+  let novaBtnEdit = btnEdit.cloneNode(true);
+  let novaBtnDelete = btnDelete.cloneNode(true);
+  
+  novaImage = document.createElement('img');
+  novaImage.src = lt_data[i].coluna3;
+  novaImage.classList.add('gt_column_img');
+
+  let valorColuna1Original = novaColuna1.textContent;
+  let valorColuna2Original = novaColuna2.textContent;
+  
+  novaBtnEdit.addEventListener("click", () => {
+    if (novaBtnEdit.textContent === "Editar") {
       
-//       let dadosLinha = {
-//         coluna1: novaColuna1.querySelector("input").value,
-//         coluna2: novaColuna2.querySelector("input").value
-//       };
+      valorColuna1Original = novaColuna1.textContent;
+      valorColuna2Original = novaColuna2.textContent;
+      
+      novaColuna1.innerHTML = '<input type="text" value="' + novaColuna1.textContent + '">';
+      novaColuna2.innerHTML = '<input type="text" value="' + novaColuna2.textContent + '">';
+      novaBtnEdit.textContent = "Salvar";
+      novaBtnDelete.textContent = "Cancelar";
+    } else {
+      
+      let dadosLinha = {
+        colunaId: novacolunaID.textContent,
+        coluna1: novaColuna1.querySelector("input").value,
+        coluna2: novaColuna2.querySelector("input").value
+      };
 
-//       lt_data[i] = dadosLinha;
+      lt_data[i] = dadosLinha;
 
 
-//       novaColuna1.textContent = dadosLinha.coluna1;
-//       novaColuna2.textContent = dadosLinha.coluna2;
-//       novaColuna3.textContent = "Editar";
-//       novaColuna4.textContent = "Deletar";
-//     }
-//   });
+      novaColuna1.textContent = dadosLinha.coluna1;
+      novaColuna2.textContent = dadosLinha.coluna2;
+      novaBtnEdit.textContent = "Editar";
+      novaBtnDelete.textContent = "Deletar";
+    }
+  });
 
-//   novaColuna4.addEventListener("click", () => {
-//     if (novaColuna4.textContent === "Cancelar") {
-//       novaColuna1.innerHTML = novaColuna1.querySelector("input").value;
-//       novaColuna2.innerHTML = novaColuna2.querySelector("input").value;
-//       novaColuna3.textContent = "Editar";
-//       novaColuna4.textContent = "Deletar";
-//     } else {
-//       linha.remove();
-//     }
-//   });
+  novaBtnDelete.addEventListener("click", () => {
+    if (novaBtnDelete.textContent === "Cancelar") {
+
+      if ( novaColuna1.querySelector("input").value !== novaColuna1.textContent ){
+        novaColuna1.textContent = valorColuna1Original;
+        novaColuna2.textContent = valorColuna2Original;
+      }
+     else{
+      novaColuna1.innerHTML = coluna1.textContent;
+      novaColuna2.innerHTML = coluna2.textContent;
+
+     }
+      
+     novaBtnEdit.textContent = "Editar";
+     novaBtnDelete.textContent = "Deletar";
+    } else {
+      linha.remove();
+    }
+  });
   
-//   linha.appendChild(novaColuna1);
-//   linha.appendChild(novaColuna2);
-//   linha.appendChild(novaColuna3);
-//   linha.appendChild(novaColuna4);
-//   table.appendChild(linha);
-// }
 
-// let tableContainer = document.getElementById("table-container");
-// tableContainer.appendChild(table);
+  linha.appendChild(novacolunaID);
+  linha.appendChild(novaImage);
+  linha.appendChild(novaColuna1);
+  linha.appendChild(novaColuna2);
+  linha.appendChild(novaBtnEdit);
+  linha.appendChild(novaBtnDelete);
+  table.appendChild(linha);
+}
 
-// console.log(lt_data); 
+let tableContainer = document.getElementById("table-container");
+tableContainer.appendChild(table);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var tests = [
-//     {'name':'Distillation 50%', 'id':'1', 'result':"43"},
-//     {'name':'Flash Point', 'id':'2', 'result':"61"},
-//     {'name':'Water By Karl Fischer', 'id':'3', 'result':"24"},
-// ]
-
-
-// for (var i in tests){
-//     addRow(tests[i])
-// }
-
-// function addRow(obj){
-//     var row = `<tr scope="row" class="test-row-${obj.id}">
-//                    <td>${obj.name}</td>
-//                    <td>${obj.result}</td>
-//                    <td>
-//                            <button class="btn btn-sm btn-danger">Delete</button>
-//                            <button class="btn btn-sm btn-info">Save</button>
-//                            <!--
-//                            <button class="btn btn-sm btn-danger">Cancel</button>
-//                            <button class="btn btn-sm btn-primary">Confirm</button>
-//                            -->
-//                    </td>
-//                </tr>`
-//     $('#tests-table').append(row)
-
-// }
+console.log(lt_data); 
